@@ -12,6 +12,56 @@
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
   <link rel="stylesheet" href="dist/output.css" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .masonry-grid {
+      column-count: 1;
+      column-gap: 8px;
+      padding: 0;
+    }
+    
+    @media (min-width: 640px) {
+      .masonry-grid {
+        column-count: 2;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .masonry-grid {
+        column-count: 3;
+      }
+    }
+    
+    @media (min-width: 1280px) {
+      .masonry-grid {
+        column-count: 4;
+      }
+    }
+    
+    .photo-item {
+      break-inside: avoid;
+      margin-bottom: 8px;
+      display: inline-block;
+      width: 100%;
+    }
+    
+    .photo-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+    
+    .photo-item:hover img {
+      transform: scale(1.02);
+    }
+    
+    .photo-item a {
+      display: block;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+  </style>
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <!-- Start - Fonts -->
@@ -111,137 +161,346 @@
         </div>
       </div>
       <div class="container w-full">
-        <div class="flex flex-wrap w-full" id="photo-gallery">
+        <div class="masonry-grid" id="photo-gallery">
           <!-- 城市照片 -->
-          <div class="photo-item city w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/city/0bbfc1c9d1993d0cbaf476fa41ab5f0.jpg" data-fancybox="gallery">
-                <img alt="City Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/city/0bbfc1c9d1993d0cbaf476fa41ab5f0.jpg" />
-              </a>
-            </div>
+          <div class="photo-item city">
+            <a href="assets/city/0bbfc1c9d1993d0cbaf476fa41ab5f0.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/0bbfc1c9d1993d0cbaf476fa41ab5f0.jpg" />
+            </a>
           </div>
-          <div class="photo-item city w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/city/15fad4b16c670fe6ff6de8e09c9ddf5.jpg" data-fancybox="gallery">
-                <img alt="City Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/city/15fad4b16c670fe6ff6de8e09c9ddf5.jpg" />
-              </a>
-            </div>
+          <div class="photo-item city">
+            <a href="assets/city/15fad4b16c670fe6ff6de8e09c9ddf5.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/15fad4b16c670fe6ff6de8e09c9ddf5.jpg" />
+            </a>
           </div>
-          <div class="photo-item city w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/city/1c3ab5719708fb0f8e07f45c6e55bc6.jpg" data-fancybox="gallery">
-                <img alt="City Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/city/1c3ab5719708fb0f8e07f45c6e55bc6.jpg" />
-              </a>
-            </div>
+          <div class="photo-item city">
+            <a href="assets/city/1c3ab5719708fb0f8e07f45c6e55bc6.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/1c3ab5719708fb0f8e07f45c6e55bc6.jpg" />
+            </a>
           </div>
-          <div class="photo-item city w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/city/2b214022bf920e30818f2aa76267b3a.jpg" data-fancybox="gallery">
-                <img alt="City Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/city/2b214022bf920e30818f2aa76267b3a.jpg" />
-              </a>
-            </div>
+          <div class="photo-item city">
+            <a href="assets/city/2b214022bf920e30818f2aa76267b3a.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/2b214022bf920e30818f2aa76267b3a.jpg" />
+            </a>
           </div>
-          <div class="photo-item city w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/city/3aee8fb818227ee305d74dcabb19c87.jpg" data-fancybox="gallery">
-                <img alt="City Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/city/3aee8fb818227ee305d74dcabb19c87.jpg" />
-              </a>
-            </div>
+          <div class="photo-item city">
+            <a href="assets/city/3aee8fb818227ee305d74dcabb19c87.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/3aee8fb818227ee305d74dcabb19c87.jpg" />
+            </a>
           </div>
-          <div class="photo-item city w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/city/73c07ae62af58d7795495a3da50a630.jpg" data-fancybox="gallery">
-                <img alt="City Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/city/73c07ae62af58d7795495a3da50a630.jpg" />
-              </a>
-            </div>
+          <div class="photo-item city">
+            <a href="assets/city/73c07ae62af58d7795495a3da50a630.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/73c07ae62af58d7795495a3da50a630.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/807885e5a0061ee8ec1316a95fd556f.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/807885e5a0061ee8ec1316a95fd556f.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/9a0e87a0299959b3e1740980d699bf1.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/9a0e87a0299959b3e1740980d699bf1.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/b08dc3b8fd032b0654b44c16115a2be.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/b08dc3b8fd032b0654b44c16115a2be.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/b894f9b5d93d5d14398d3251d64c938.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/b894f9b5d93d5d14398d3251d64c938.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/c3df0c9d6129c2201ac504d1302d9f9.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/c3df0c9d6129c2201ac504d1302d9f9.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/mmexport1702967427813.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/mmexport1702967427813.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20230121173654.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/微信图片_20230121173654.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20230121173657.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/微信图片_20230121173657.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20251012211719_246_155.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/微信图片_20251012211719_246_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20251012211728_247_155.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/微信图片_20251012211728_247_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20251012211730_248_155.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/微信图片_20251012211730_248_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20251012212234_252_155.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/微信图片_20251012212234_252_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20251012215408_279_155.jpg" data-fancybox="gallery">
+              <img alt="City Photography" src="assets/city/微信图片_20251012215408_279_155.jpg" />
+            </a>
           </div>
 
           <!-- 自然照片 -->
-          <div class="photo-item nature w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/nature/0eba753359e8e86394e769328692c12.jpg" data-fancybox="gallery">
-                <img alt="Nature Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/nature/0eba753359e8e86394e769328692c12.jpg" />
-              </a>
-            </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/0eba753359e8e86394e769328692c12.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/0eba753359e8e86394e769328692c12.jpg" />
+            </a>
           </div>
-          <div class="photo-item nature w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/nature/19042997e95038590f11b27772a9cbd.jpg" data-fancybox="gallery">
-                <img alt="Nature Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/nature/19042997e95038590f11b27772a9cbd.jpg" />
-              </a>
-            </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/19042997e95038590f11b27772a9cbd.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/19042997e95038590f11b27772a9cbd.jpg" />
+            </a>
           </div>
-          <div class="photo-item nature w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/nature/381402857f989f878a59a6572bf555b.jpg" data-fancybox="gallery">
-                <img alt="Nature Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/nature/381402857f989f878a59a6572bf555b.jpg" />
-              </a>
-            </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/381402857f989f878a59a6572bf555b.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/381402857f989f878a59a6572bf555b.jpg" />
+            </a>
           </div>
-          <div class="photo-item nature w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/nature/578a91ece0de0efe7443277775b9c1f.jpg" data-fancybox="gallery">
-                <img alt="Nature Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/nature/578a91ece0de0efe7443277775b9c1f.jpg" />
-              </a>
-            </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/578a91ece0de0efe7443277775b9c1f.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/578a91ece0de0efe7443277775b9c1f.jpg" />
+            </a>
           </div>
-          <div class="photo-item nature w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/nature/75bef78ff1a4a50927dff8679eb0cc7.jpg" data-fancybox="gallery">
-                <img alt="Nature Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/nature/75bef78ff1a4a50927dff8679eb0cc7.jpg" />
-              </a>
-            </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/75bef78ff1a4a50927dff8679eb0cc7.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/75bef78ff1a4a50927dff8679eb0cc7.jpg" />
+            </a>
           </div>
-          <div class="photo-item nature w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/nature/8b0ddb4e28f92a1eb2e276d1ddcdc7d.jpg" data-fancybox="gallery">
-                <img alt="Nature Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/nature/8b0ddb4e28f92a1eb2e276d1ddcdc7d.jpg" />
-              </a>
-            </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/8b0ddb4e28f92a1eb2e276d1ddcdc7d.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/8b0ddb4e28f92a1eb2e276d1ddcdc7d.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/IMG_1590.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/IMG_1590.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/IMG_1717_HDR.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/IMG_1717_HDR.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/IMG_20240226_015838.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/IMG_20240226_015838.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/a9d9e74f214de193d2ed34a2ce0ba90.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/a9d9e74f214de193d2ed34a2ce0ba90.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/c5b62337bf499c416f7fcb3d507aee6.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/c5b62337bf499c416f7fcb3d507aee6.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/e2f5f09e8c799e6e99758a9b71be786.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/e2f5f09e8c799e6e99758a9b71be786.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/mmexport1708832747072.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/mmexport1708832747072.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20230121173650.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/微信图片_20230121173650.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20230121173725.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/微信图片_20230121173725.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20250111170615.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/微信图片_20250111170615.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012203225_219_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/微信图片_20251012203225_219_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012211030_241_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/微信图片_20251012211030_241_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012211731_249_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/微信图片_20251012211731_249_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012211732_250_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/微信图片_20251012211732_250_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012211736_251_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/微信图片_20251012211736_251_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012215426_280_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" src="assets/nature/微信图片_20251012215426_280_155.jpg" />
+            </a>
           </div>
 
           <!-- 人像照片 -->
-          <div class="photo-item portraits w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/portraits/1-横版.jpg" data-fancybox="gallery">
-                <img alt="Portrait Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/portraits/1-横版.jpg" />
-              </a>
-            </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/1-横版.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/1-横版.jpg" />
+            </a>
           </div>
-          <div class="photo-item portraits w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/portraits/10.jpg" data-fancybox="gallery">
-                <img alt="Portrait Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/portraits/10.jpg" />
-              </a>
-            </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/10.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/10.jpg" />
+            </a>
           </div>
-          <div class="photo-item portraits w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/portraits/7-合并.jpg" data-fancybox="gallery">
-                <img alt="Portrait Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/portraits/7-合并.jpg" />
-              </a>
-            </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/7-合并.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/7-合并.jpg" />
+            </a>
           </div>
-          <div class="photo-item portraits w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/portraits/微信图片_20251012212823_253_155.jpg" data-fancybox="gallery">
-                <img alt="Portrait Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/portraits/微信图片_20251012212823_253_155.jpg" />
-              </a>
-            </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212823_253_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212823_253_155.jpg" />
+            </a>
           </div>
-          <div class="photo-item portraits w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/portraits/微信图片_20251012212825_254_155.jpg" data-fancybox="gallery">
-                <img alt="Portrait Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/portraits/微信图片_20251012212825_254_155.jpg" />
-              </a>
-            </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212825_254_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212825_254_155.jpg" />
+            </a>
           </div>
-          <div class="photo-item portraits w-full md:w-1/2 p-1">
-            <div class="overflow-hidden h-full w-full">
-              <a href="assets/portraits/微信图片_20251012212827_255_155.jpg" data-fancybox="gallery">
-                <img alt="Portrait Photography" class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110" src="assets/portraits/微信图片_20251012212827_255_155.jpg" />
-              </a>
-            </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212827_255_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212827_255_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212828_256_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212828_256_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212830_257_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212830_257_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212837_258_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212837_258_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212841_259_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212841_259_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212843_260_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212843_260_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212846_261_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212846_261_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212849_263_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212849_263_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212850_264_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012212850_264_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214122_266_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214122_266_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214124_267_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214124_267_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214125_268_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214125_268_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214128_269_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214128_269_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214137_271_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214137_271_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214139_272_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214139_272_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214141_273_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214141_273_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214142_274_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214142_274_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214145_275_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214145_275_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214147_276_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214147_276_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214149_277_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214149_277_155.jpg" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214151_278_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" src="assets/portraits/微信图片_20251012214151_278_155.jpg" />
+            </a>
           </div>
         </div>
       </div>
