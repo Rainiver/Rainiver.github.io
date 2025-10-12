@@ -247,10 +247,6 @@
           <div class="photo-item city">
             <a href="assets/city/0bbfc1c9d1993d0cbaf476fa41ab5f0.jpg" data-fancybox="gallery">
               <img alt="City Photography" data-src="assets/city/0bbfc1c9d1993d0cbaf476fa41ab5f0.jpg" class="lazy" />
-              <div class="loading-placeholder">
-                <div class="loading-spinner"></div>
-                Loading...
-              </div>
             </a>
           </div>
           <div class="photo-item city">
@@ -692,9 +688,29 @@
       const preloadImages = Array.from(lazyImages).slice(0, 6);
       preloadImages.forEach(img => {
         img.src = img.dataset.src;
-        img.classList.add('loaded');
-        img.parentElement.classList.add('loaded');
-        loadedCount++;
+        img.onload = function() {
+          img.classList.add('loaded');
+          img.parentElement.classList.add('loaded');
+          loadedCount++;
+          
+          // 更新进度条
+          const progress = (loadedCount / totalImages) * 100;
+          const progressBar = document.getElementById('progressBar');
+          if (progressBar) {
+            progressBar.style.width = progress + '%';
+          }
+          
+          // 隐藏进度条当加载完成时
+          if (loadedCount === totalImages) {
+            setTimeout(() => {
+              const progressContainer = document.querySelector('.loading-progress');
+              if (progressContainer) {
+                progressContainer.style.opacity = '0';
+                setTimeout(() => progressContainer.remove(), 500);
+              }
+            }, 500);
+          }
+        };
       });
       
       const imageObserver = new IntersectionObserver((entries, observer) => {
