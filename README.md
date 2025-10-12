@@ -25,7 +25,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/JoaoFranco03/photography-portfolio">
-    <img src="dist/assets/Logo.jpg" alt="Logo" width="80" height="80">
+    <h3 align="center">Photography Portfolio</h3>
   </a>
 
   <h3 align="center">Photography Portfolio</h3>
