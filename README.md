@@ -1,184 +1,143 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+# Rainie's Personal Portfolio
 
-<a name="readme-top"></a>
+一个现代化的个人主页，展示AI研究、摄影作品和个人信息。
 
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
+## 🌟 功能特色
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
+- **进入界面**：全屏背景图片展示，带有优雅的动画效果
+- **个人主页**：展示个人信息、技能、研究兴趣和项目
+- **项目展示**：3个主要AI项目的卡片式展示
+- **摄影作品集**：完整的摄影画廊，支持分类浏览
+- **响应式设计**：完美适配桌面端和移动端
+- **现代化UI**：使用Tailwind CSS构建的美观界面
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
+## 📁 项目结构
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/JoaoFranco03/photography-portfolio">
-    <h3 align="center">Photography Portfolio</h3>
-  </a>
+```
+photography-portfolio/
+├── index.html              # 进入界面（主页）
+├── main.html               # 个人主页
+├── photography.html        # 摄影作品集
+├── dist/                   # 编译后的CSS和JS文件
+├── assets/                 # 摄影作品图片
+│   ├── city/              # 城市摄影
+│   ├── nature/            # 自然摄影
+│   └── portraits/         # 人像摄影
+├── profile/               # 个人资料文件
+│   ├── background.jpg     # 背景图片
+│   ├── head.jpg          # 个人头像
+│   └── Yuhe_CV.pdf       # 个人简历
+└── README.md
+```
 
-  <h3 align="center">Photography Portfolio</h3>
+## 🚀 部署到GitHub Pages
 
-  <p align="center">
-    A Website created using Tailwind CSS, HTML, CSS <br /> and JavaScript that can be used as a Photography Portfolio.
-    <br />
-    <br />
-    <a href="https://photography-portfolio-joaofranco03.netlify.app/">View Demo</a>
-    <br />
-    <br />
-    
-  </p>
+### 1. 准备GitHub仓库
+
+确保你的GitHub仓库名为 `Rainiver.github.io`，这样GitHub Pages会自动识别。
+
+### 2. 上传文件
+
+将项目文件上传到GitHub仓库：
+
+```bash
+git add .
+git commit -m "Initial personal portfolio setup"
+git push origin main
+```
+
+### 3. 启用GitHub Pages
+
+1. 进入GitHub仓库页面
+2. 点击 **Settings** 标签
+3. 滚动到 **Pages** 部分
+4. 在 **Source** 下选择 **Deploy from a branch**
+5. 选择 **main** 分支
+6. 点击 **Save**
+
+### 4. 访问网站
+
+部署完成后，你的个人主页将在以下地址可用：
+`https://rainiver.github.io`
+
+## 🎨 自定义内容
+
+### 更新个人信息
+
+编辑 `main.html` 文件中的以下部分：
+
+1. **个人介绍**：修改About部分的内容
+2. **联系方式**：更新社交媒体链接和邮箱
+3. **项目信息**：更新项目卡片的内容和链接
+4. **技能展示**：根据需要调整技能列表
+
+### 更新照片
+
+1. 替换 `profile/background.jpg` 作为进入界面的背景图
+2. 替换 `profile/head.jpg` 作为个人头像
+3. 在 `assets/` 文件夹中添加或替换摄影作品
+
+### 更新项目
+
+在 `main.html` 中更新项目卡片：
+
+```html
+<div class="project-card bg-white rounded-lg overflow-hidden fade-in">
+  <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600">
+    <!-- 项目封面 -->
+  </div>
+  <div class="p-6">
+    <h3 class="text-xl font-signika font-bold mb-2">项目名称</h3>
+    <p class="text-gray-600 text-sm mb-3">年份</p>
+    <p class="text-gray-700 mb-4">项目描述</p>
+    <a href="项目链接" target="_blank" class="text-blue-600 hover:text-blue-800">
+      View Project →
+    </a>
+  </div>
 </div>
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#about-the-project">About The Project</a></li>
-    <li>
-      <a href="#built-with">Built With</a>
-      <ul>
-        <li><a href="#html-badge">HTML</a></li>
-        <li><a href="#css-badge">CSS</a></li>
-        <li><a href="#js-badge">JavaScript</a></li>
-        <li><a href="#tailwind-badge">Tailwind CSS</a></li>
-      </ul>
-    </li>
-    <li><a href="#quick-start">Quick Start</a></li>
-    <li><a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
-<!-- ABOUT THE PROJECT -->
-
-# 📋 About The Project <a name="about-the-project"></a>
-
-[![Product Name Screen Shot][product-screenshot]](https://github.com/JoaoFranco03/photography-portfolio)
-
-This project is a web-based portfolio that beautifully showcases the photography work of Sophia Williams, a fictional photographer. The portfolio was skillfully built using a combination of powerful front-end technologies, including Tailwind CSS, CSS, HTML, and JavaScript.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🛠️ Built With <a name="built-with"></a>
-
-- [![HTML][html-badge]][html-url]
-- [![CSS][css-badge]][css-url]
-- [![JavaScript][js-badge]][js-url]
-- [![Tailwind][tailwind-badge]][tailwind-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🚀 Quick Start <a name="quick-start"></a>
-
-Create your own page with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/JoaoFranco03/photography-portfolio)
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🎯 Getting Started <a name="getting-started"></a>
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### 🏗️ Installation <a name="installation"></a>
-
-1. Clone the repo
-
-```sh
- git clone https://github.com/JoaoFranco03/photography-portfolio/.git
 ```
 
-2.  Run the following command:
+## 🛠️ 技术栈
 
-```sh
- npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+- **HTML5**：语义化标记
+- **CSS3**：现代样式和动画
+- **Tailwind CSS**：实用优先的CSS框架
+- **JavaScript**：交互功能和动画
+- **响应式设计**：移动端优先的设计理念
+
+## 📱 浏览器支持
+
+- Chrome (推荐)
+- Firefox
+- Safari
+- Edge
+- 移动端浏览器
+
+## 🔧 本地开发
+
+如果你想在本地运行项目：
+
+1. 克隆仓库：
+```bash
+git clone https://github.com/Rainiver/Rainiver.github.io.git
+cd Rainiver.github.io
 ```
-3.  Run the Project in a Server
 
-4.  Change it with your own photos, about me and contact info.
+2. 使用本地服务器（推荐使用Live Server或其他静态文件服务器）
 
-5.  Publish it using your preferred hosting platform.
+3. 在浏览器中打开 `index.html`
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## 📄 许可证
 
-<!-- Ko-fi -->
+MIT License - 详见 [LICENSE](LICENSE) 文件
 
-## ☕ Support Me on Ko-fi
+## 📞 联系方式
 
-If you find this project useful, consider supporting me on Ko-fi. Thanks for checking it out!  
+- **邮箱**：rainiver703@gmail.com
+- **LinkedIn**：[yuhe-zhong](https://www.linkedin.com/in/yuhe-zhong/)
+- **GitHub**：[Rainiver](https://github.com/Rainiver)
+- **Instagram**：[rainiver0703](https://www.instagram.com/rainiver0703)
 
-<a href="https://ko-fi.com/joaofranco03" target="_blank">
-    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="height:40px;">
-</a>
+---
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## 📜 License <a name="license"></a>
-
-Distributed under the GPL-3.0 License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTACT -->
-
-## 📧 Contact <a name="contact"></a>
-
-João Franco - https://www.linkedin.com/in/joão-franco-452161195/
-
-Project Link: [https://github.com/JoaoFranco03/photography-portfolio/](https://github.com/JoaoFranco03/photography-portfolio/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-
-## 🌟 Acknowledgments <a name="acknowledgments"></a>
-
-- [FancyBox](https://fancyapps.com/fancybox/)
-- [Unsplash](https://unsplash.com/)
-- [Tailwind Documentation](https://tailwindcss.com/docs/installation)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[tailwind-badge]: https://img.shields.io/badge/Tailwind_CSS-62BAF3?style=for-the-badge&logo=tailwind-css&logoColor=white
-[tailwind-url]: https://tailwindcss.com
-[html-badge]: https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white
-[html-url]: https://developer.mozilla.org/en-US/docs/Web/HTML
-[css-badge]: https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white
-[css-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
-[js-badge]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
-[js-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
-[license-url]: https://github.com/JoaoFranco03/photography-portfolio/blob/main/LICENSE.md
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/joão-franco-452161195/
-[product-screenshot]: dist/assets/mockup.png
+⭐ 如果这个项目对你有帮助，请给个Star！

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photography Portfolio - Rainie</title>
+  <meta name="description"
+    content="Rainie's photography portfolio, showcasing passion for city, nature, and portrait photography. Capturing beautiful moments and sharing unique perspectives of the world.">
+  <link rel="stylesheet" href="dist/output.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- 预加载关键资源 -->
+  <link rel="preload" href="assets/city/0bbfc1c9d1993d0cbaf476fa41ab5f0.jpg" as="image">
+  <link rel="preload" href="assets/city/15fad4b16c670fe6ff6de8e09c9ddf5.jpg" as="image">
+  <link rel="preload" href="assets/nature/0eba753359e8e86394e769328692c12.jpg" as="image">
+  <link rel="preload" href="assets/portraits/1-横版.jpg" as="image">
+  <style>
+    .masonry-grid {
+      column-count: 1;
+      column-gap: 8px;
+      padding: 0;
+    }
+    
+    @media (min-width: 640px) {
+      .masonry-grid {
+        column-count: 2;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .masonry-grid {
+        column-count: 3;
+      }
+    }
+    
+    @media (min-width: 1280px) {
+      .masonry-grid {
+        column-count: 4;
+      }
+    }
+    
+    .photo-item {
+      break-inside: avoid;
+      margin-bottom: 8px;
+      display: inline-block;
+      width: 100%;
+    }
+    
+    .photo-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+    
+    .photo-item:hover img {
+      transform: scale(1.02);
+    }
+    
+    .photo-item a {
+      display: block;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    
+    /* 懒加载样式 */
+    .photo-item img {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .photo-item img.loaded {
+      opacity: 1;
+    }
+    
+    /* 加载占位符 */
+    .photo-item {
+      background: #f3f4f6;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .photo-item.loaded {
+      background: transparent;
+    }
+    
+    .loading-placeholder {
+      color: #9ca3af;
+      font-size: 14px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .photo-item.loaded .loading-placeholder {
+      display: none;
+    }
+    
+    /* 加载动画 */
+    .loading-spinner {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #e5e7eb;
+      border-top: 2px solid #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 8px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* 加载进度条 */
+    .loading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #e5e7eb;
+      z-index: 1000;
+    }
+    
+    .loading-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+  </style>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Start - Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet">
+  <!-- End - Fonts -->
+  <!-- Start - Fancybox Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+  <!-- End - Fancybox Scripts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      content: ["./dist/*.{html,js}"],
+      theme: {
+        extend:
+                {
+                  fontFamily: {
+                    'nothingyoucoulddo': ['Nothing You Could Do', 'cursive'],
+                    'signika': ['Signika', 'sans-serif'],
+                  },
+                },
+      },
+      plugins: [],
+    }
+  </script>
+</head>
+
+<body
+  class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
+  <!-- 加载进度条 -->
+  <div class="loading-progress">
+    <div class="loading-progress-bar" id="progressBar"></div>
+  </div>
+  <!-- Navbar -->
+  <header class="flex w-full overflow-hidden pt-10 pb-1">
+    <!-- Navbar -->
+    <nav id="nav" x-data="{ open: false }" role="navigation" class="w-full">
+      <div class="container mx-auto flex flex-wrap items-center md:flex-no-wrap">
+        <div class="mr-4 md:mr-8">
+          <a href="main.html" class="text-2xl font-signika font-bold">RAINIE</a>
+        </div>
+        <div class="ml-auto md:hidden flex items-center justify-start">
+          <button onclick="menuToggle()" @click="open = !open"
+            class="tap-highlight-transparent text-black dark:text-white w-5 h-5 relative focus:outline-none"
+            @click="open = !open">
+            <span class="sr-only">Open main menu</span>
+            <div class="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <span aria-hidden="true"
+                class="block absolute h-0.5 w-5 bg-current transform transition duration-500 ease-in-out"
+                :class="{'rotate-45': open,' -translate-y-1.5': !open }"></span>
+              <span aria-hidden="true"
+                class="block absolute  h-0.5 w-5 bg-current   transform transition duration-500 ease-in-out"
+                :class="{'opacity-0': open } "></span>
+              <span aria-hidden="true"
+                class="block absolute h-0.5 w-5 bg-current transform  transition duration-500 ease-in-out"
+                :class="{'-rotate-45': open, ' translate-y-1.5': !open}"></span>
+            </div>
+          </button>
+        </div>
+        <div id="menu"
+          class="w-full h-0 transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center">
+          <ul id="ulMenu"
+            class="flex flex-col duration-300 ease-out md:space-x-5 sm:transition-none mt-5 md:flex-row md:items-center md:ml-auto md:mt-0 md:pt-0 md:border-0">
+            <li class="group transition duration-300">
+              <a href="photography.html" class="font-signika text-2xl tap-highlight-transparent">PHOTOGRAPHY
+                <span class="hidden md:block h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="main.html" class="font-signika text-2xl tap-highlight-transparent">PORTFOLIO
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+            <li class="group transition duration-300">
+              <a href="main.html#contact" class="font-signika text-2xl tap-highlight-transparent">CONTACT
+                <span
+                  class="hidden md:block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-black dark:bg-white"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- Content -->
+  <div class="container mx-auto">
+    <h1 class="text-4xl pt-10 pb-8 font-bold">PHOTOGRAPHY</h1>
+    <!-- Updated: All 67 photos with masonry layout -->
+    <section class="text-neutral-700">
+      <!-- 分类导航 -->
+      <div class="mb-8">
+        <div class="flex flex-wrap justify-center gap-4 mb-6">
+          <button onclick="showCategory('all')" class="category-btn active px-6 py-3 bg-black text-white rounded-lg font-signika text-lg hover:bg-gray-800 transition duration-300">ALL</button>
+          <button onclick="showCategory('city')" class="category-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-signika text-lg hover:bg-gray-300 transition duration-300">CITY</button>
+          <button onclick="showCategory('nature')" class="category-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-signika text-lg hover:bg-gray-300 transition duration-300">NATURE</button>
+          <button onclick="showCategory('portraits')" class="category-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-signika text-lg hover:bg-gray-300 transition duration-300">PORTRAITS</button>
+        </div>
+      </div>
+      <div class="container w-full">
+        <div class="masonry-grid" id="photo-gallery">
+          <!-- 城市照片 -->
+          <div class="photo-item city">
+            <a href="assets/city/0bbfc1c9d1993d0cbaf476fa41ab5f0.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/0bbfc1c9d1993d0cbaf476fa41ab5f0.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/15fad4b16c670fe6ff6de8e09c9ddf5.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/15fad4b16c670fe6ff6de8e09c9ddf5.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/1c3ab5719708fb0f8e07f45c6e55bc6.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/1c3ab5719708fb0f8e07f45c6e55bc6.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/2b214022bf920e30818f2aa76267b3a.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/2b214022bf920e30818f2aa76267b3a.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/3aee8fb818227ee305d74dcabb19c87.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/3aee8fb818227ee305d74dcabb19c87.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/73c07ae62af58d7795495a3da50a630.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/73c07ae62af58d7795495a3da50a630.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/807885e5a0061ee8ec1316a95fd556f.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/807885e5a0061ee8ec1316a95fd556f.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/9a0e87a0299959b3e1740980d699bf1.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/9a0e87a0299959b3e1740980d699bf1.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/b08dc3b8fd032b0654b44c16115a2be.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/b08dc3b8fd032b0654b44c16115a2be.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/b894f9b5d93d5d14398d3251d64c938.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/b894f9b5d93d5d14398d3251d64c938.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/c3df0c9d6129c2201ac504d1302d9f9.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/c3df0c9d6129c2201ac504d1302d9f9.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/mmexport1702967427813.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/mmexport1702967427813.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20230121173654.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/微信图片_20230121173654.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20230121173657.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/微信图片_20230121173657.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20251012211719_246_155.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/微信图片_20251012211719_246_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20251012211728_247_155.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/微信图片_20251012211728_247_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20251012211730_248_155.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/微信图片_20251012211730_248_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20251012212234_252_155.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/微信图片_20251012212234_252_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item city">
+            <a href="assets/city/微信图片_20251012215408_279_155.jpg" data-fancybox="gallery">
+              <img alt="City Photography" data-src="assets/city/微信图片_20251012215408_279_155.jpg" class="lazy" />
+            </a>
+          </div>
+
+          <!-- 自然照片 -->
+          <div class="photo-item nature">
+            <a href="assets/nature/0eba753359e8e86394e769328692c12.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/0eba753359e8e86394e769328692c12.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/19042997e95038590f11b27772a9cbd.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/19042997e95038590f11b27772a9cbd.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/381402857f989f878a59a6572bf555b.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/381402857f989f878a59a6572bf555b.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/578a91ece0de0efe7443277775b9c1f.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/578a91ece0de0efe7443277775b9c1f.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/75bef78ff1a4a50927dff8679eb0cc7.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/75bef78ff1a4a50927dff8679eb0cc7.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/8b0ddb4e28f92a1eb2e276d1ddcdc7d.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/8b0ddb4e28f92a1eb2e276d1ddcdc7d.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/IMG_1590.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/IMG_1590.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/IMG_1717_HDR.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/IMG_1717_HDR.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/IMG_20240226_015838.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/IMG_20240226_015838.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/a9d9e74f214de193d2ed34a2ce0ba90.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/a9d9e74f214de193d2ed34a2ce0ba90.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/c5b62337bf499c416f7fcb3d507aee6.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/c5b62337bf499c416f7fcb3d507aee6.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/e2f5f09e8c799e6e99758a9b71be786.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/e2f5f09e8c799e6e99758a9b71be786.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/mmexport1708832747072.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/mmexport1708832747072.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20230121173650.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/微信图片_20230121173650.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20230121173725.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/微信图片_20230121173725.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20250111170615.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/微信图片_20250111170615.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012203225_219_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/微信图片_20251012203225_219_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012211731_249_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/微信图片_20251012211731_249_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012211732_250_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/微信图片_20251012211732_250_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012211736_251_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/微信图片_20251012211736_251_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item nature">
+            <a href="assets/nature/微信图片_20251012215426_280_155.jpg" data-fancybox="gallery">
+              <img alt="Nature Photography" data-src="assets/nature/微信图片_20251012215426_280_155.jpg" class="lazy" />
+            </a>
+          </div>
+
+          <!-- 人像照片 -->
+          <div class="photo-item portraits">
+            <a href="assets/portraits/1-横版.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/1-横版.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/10.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/10.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/7-合并.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/7-合并.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212823_253_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212823_253_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212825_254_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212825_254_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212827_255_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212827_255_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212828_256_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212828_256_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212830_257_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212830_257_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212837_258_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212837_258_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212841_259_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212841_259_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212843_260_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212843_260_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212846_261_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212846_261_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212849_263_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212849_263_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012212850_264_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012212850_264_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214122_266_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214122_266_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214124_267_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214124_267_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214125_268_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214125_268_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214128_269_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214128_269_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214137_271_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214137_271_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214139_272_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214139_272_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214141_273_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214141_273_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214142_274_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214142_274_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214145_275_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214145_275_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214147_276_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214147_276_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214149_277_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214149_277_155.jpg" class="lazy" />
+            </a>
+          </div>
+          <div class="photo-item portraits">
+            <a href="assets/portraits/微信图片_20251012214151_278_155.jpg" data-fancybox="gallery">
+              <img alt="Portrait Photography" data-src="assets/portraits/微信图片_20251012214151_278_155.jpg" class="lazy" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div class="max-w-screen-xl py-16 mx-auto">
+      <div class="grid grid-cols-1 gap-8 text-center mx-auto">
+        <div>
+          <p class="font-signika"><b>RAINIE ZHONG</b></p>
+          <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+            Photography Portfolio<br />Capturing beauty, sharing emotions
+          </p>
+          <div class="flex mx-auto">
+            <div class="mx-auto space-x-6 flex mt-8 text-gray-600 dark:text-gray-300">
+              <a class="transition duration-300 hover:opacity-75" href="https://www.facebook.com/profile.php?id=61576919917824" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only"> Facebook </span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                  <path
+                    d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                </svg>
+              </a>
+              <a class="transition duration-300 hover:opacity-75" href="https://www.instagram.com/rainiver0703?igsh=bzRkbTZ1Z3M4cXoz" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only"> Instagram </span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                  <path
+                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                </svg>
+              </a>
+              <a class="transition duration-300 hover:opacity-75" href="https://www.linkedin.com/in/yuhe-zhong/" target="_blank"
+                rel="noreferrer">
+                <span class="sr-only">LinkedIn</span>
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                  <path
+                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-8 text-xs text-gray-600 dark:text-gray-300 text-center">
+        © 2025 Rainie Zhong. All rights reserved.
+      </p>
+    </div>
+  </footer>
+  <!-- Script for the LightBox -->
+  <script>
+    Fancybox.bind("[data-fancybox]", {});
+  </script>
+  <script>
+    // 分类筛选功能
+    function showCategory(category) {
+      const buttons = document.querySelectorAll('.category-btn');
+      const photos = document.querySelectorAll('.photo-item');
+      
+      // 更新按钮状态
+      buttons.forEach(btn => {
+        btn.classList.remove('active', 'bg-black', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+      });
+      
+      // 激活当前按钮
+      event.target.classList.add('active', 'bg-black', 'text-white');
+      event.target.classList.remove('bg-gray-200', 'text-gray-700');
+      
+      // 显示/隐藏照片
+      photos.forEach(photo => {
+        if (category === 'all' || photo.classList.contains(category)) {
+          photo.style.display = 'block';
+        } else {
+          photo.style.display = 'none';
+        }
+      });
+    }
+
+    // 优化的懒加载功能
+    document.addEventListener('DOMContentLoaded', function() {
+      const lazyImages = document.querySelectorAll('img.lazy');
+      let loadedCount = 0;
+      const totalImages = lazyImages.length;
+      
+      // 预加载前几张图片
+      const preloadImages = Array.from(lazyImages).slice(0, 6);
+      preloadImages.forEach(img => {
+        img.src = img.dataset.src;
+        img.onload = function() {
+          img.classList.add('loaded');
+          img.parentElement.classList.add('loaded');
+          loadedCount++;
+          
+          // 更新进度条
+          const progress = (loadedCount / totalImages) * 100;
+          const progressBar = document.getElementById('progressBar');
+          if (progressBar) {
+            progressBar.style.width = progress + '%';
+          }
+          
+          // 隐藏进度条当加载完成时
+          if (loadedCount === totalImages) {
+            setTimeout(() => {
+              const progressContainer = document.querySelector('.loading-progress');
+              if (progressContainer) {
+                progressContainer.style.opacity = '0';
+                setTimeout(() => progressContainer.remove(), 500);
+              }
+            }, 500);
+          }
+        };
+      });
+      
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            if (!img.src) {
+              img.src = img.dataset.src;
+              img.onload = function() {
+                img.classList.add('loaded');
+                img.parentElement.classList.add('loaded');
+                loadedCount++;
+                
+                // 更新进度条
+                const progress = (loadedCount / totalImages) * 100;
+                const progressBar = document.getElementById('progressBar');
+                if (progressBar) {
+                  progressBar.style.width = progress + '%';
+                }
+                
+                // 隐藏进度条当加载完成时
+                if (loadedCount === totalImages) {
+                  setTimeout(() => {
+                    const progressContainer = document.querySelector('.loading-progress');
+                    if (progressContainer) {
+                      progressContainer.style.opacity = '0';
+                      setTimeout(() => progressContainer.remove(), 500);
+                    }
+                  }, 500);
+                }
+              };
+            }
+            observer.unobserve(img);
+          }
+        });
+      }, {
+        rootMargin: '50px 0px', // 提前50px开始加载
+        threshold: 0.1
+      });
+
+      // 只观察未预加载的图片
+      lazyImages.forEach((img, index) => {
+        if (index >= 6) {
+          imageObserver.observe(img);
+        }
+      });
+    });
+  </script>
+  <script src="dist/fade_in.js"></script>
+  <script src="dist/menu.js"></script>
+</body>
+
+</html>
