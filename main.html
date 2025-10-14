@@ -373,50 +373,103 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 px-6 bg-gray-50">
-      <div class="max-w-4xl mx-auto text-center">
-        <div class="fade-in">
-          <h2 class="text-3xl md:text-4xl font-signika font-bold mb-8">Let's Connect</h2>
-          <p class="text-lg text-gray-600 mb-8">
-            I'm always excited to discuss AI research, photography, or potential collaborations. Feel free to reach out!
-          </p>
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="fade-in">
+            <h2 class="text-3xl md:text-4xl font-signika font-bold mb-4">Let's Connect</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+              I'm always excited to discuss AI research, photography, or potential collaborations. Feel free to reach out!
+            </p>
+          </div>
         </div>
         
-        <div class="fade-in" style="transition-delay: 0.2s;">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="text-center">
-              <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-              </div>
-              <h3 class="font-semibold mb-2">Email</h3>
-              <a href="mailto:rainiver703@gmail.com" class="text-blue-600 hover:text-blue-800 transition-colors">
-                rainiver703@gmail.com
-              </a>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Contact Form -->
+          <div class="fade-in" style="transition-delay: 0.2s;">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+              <h3 class="text-2xl font-signika font-bold mb-6">Send me a message</h3>
+              <form class="space-y-6" action="mailto:rainiver703@gmail.com" method="post" enctype="text/plain">
+                <div>
+                  <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Your name</label>
+                  <input type="text" id="name" name="name"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+                    placeholder="Your full name" required />
+                </div>
+                <div>
+                  <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                  <input type="email" id="email" name="email"
+                    class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3"
+                    placeholder="example@gmail.com" required />
+                </div>
+                <div>
+                  <label for="subject" class="block mb-2 text-sm font-medium text-gray-900">Subject</label>
+                  <input type="text" id="subject" name="subject"
+                    class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Let me know how I can help you" required />
+                </div>
+                <div>
+                  <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Your message</label>
+                  <textarea id="message" name="message" rows="6"
+                    class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Leave a message..." required></textarea>
+                </div>
+                <button type="submit"
+                  class="py-3 px-6 text-sm font-medium text-center bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 transition-colors">
+                  Send message
+                </button>
+              </form>
             </div>
-            
-            <div class="text-center">
-              <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
+          </div>
+          
+          <!-- Contact Info -->
+          <div class="fade-in" style="transition-delay: 0.4s;">
+            <div class="space-y-8">
+              <div class="bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-signika font-bold mb-6">Get in touch</h3>
+                <div class="space-y-6">
+                  <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900">Email</h4>
+                      <a href="mailto:rainiver703@gmail.com" class="text-blue-600 hover:text-blue-800 transition-colors">
+                        rainiver703@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900">LinkedIn</h4>
+                      <a href="https://www.linkedin.com/in/yuhe-zhong/" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors">
+                        Connect with me
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div class="flex items-center">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 class="font-semibold text-gray-900">GitHub</h4>
+                      <a href="https://github.com/Rainiver" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors">
+                        View my code
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h3 class="font-semibold mb-2">LinkedIn</h3>
-              <a href="https://www.linkedin.com/in/yuhe-zhong/" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors">
-                Connect with me
-              </a>
-            </div>
-            
-            <div class="text-center">
-              <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </div>
-              <h3 class="font-semibold mb-2">GitHub</h3>
-              <a href="https://github.com/Rainiver" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors">
-                View my code
-              </a>
             </div>
           </div>
         </div>
