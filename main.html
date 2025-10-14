@@ -267,85 +267,87 @@
       </div>
     </section>
 
-    <!-- Section Divider -->
-    <div class="section-divider py-8">
-      <div class="text-center">
-        <span class="bg-white px-6 text-gray-500 font-signika text-lg">- Featured Work -</span>
-      </div>
-    </div>
-
     <!-- Projects Section -->
     <section id="projects" class="py-20 px-6 bg-gray-50">
       <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project 1 -->
-          <div class="project-card bg-white rounded-lg overflow-hidden fade-in">
-            <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center relative">
-              <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-              <div class="text-center text-white relative z-10">
-                <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                <p class="font-semibold">AI Booking Platform</p>
-              </div>
+        <div class="text-center mb-16">
+          <div class="fade-in">
+            <h2 class="text-3xl md:text-4xl font-signika font-bold mb-4">Projects</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+              Exploring the intersection of AI, 3D vision, and generative models
+            </p>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <!-- Project 1: Airbnb AI Booking Platform -->
+          <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in">
+            <div class="relative overflow-hidden group">
+              <img src="profile/airbnb.png" 
+                   alt="Airbnb AI Booking Platform" 
+                   class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-signika font-bold mb-2">Airbnb AI Booking Platform</h3>
-              <p class="text-gray-600 text-sm mb-3">2024</p>
-              <p class="text-gray-700 mb-4">Full-stack AI booking platform with RAG retrieval, Multi-Agent collaboration & smart pricing engine</p>
+              <h3 class="text-2xl font-signika font-bold mb-3">Airbnb AI Booking Platform</h3>
+              <p class="text-gray-700 mb-6 leading-relaxed">Full-stack AI booking platform with RAG retrieval, Multi-Agent collaboration & smart pricing engine</p>
               <div class="flex items-center justify-between">
-                <a href="https://github.com/Rainiver/airbnb-ai-booking-platform" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors font-medium">
-                  View Project →
+                <a href="https://github.com/Rainiver/airbnb-ai-booking-platform" target="_blank" 
+                   class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                  View Project
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
                 </a>
-                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">TypeScript</span>
+                <span class="text-xs bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">TypeScript</span>
               </div>
             </div>
           </div>
 
-          <!-- Project 2 -->
-          <div class="project-card bg-white rounded-lg overflow-hidden fade-in" style="transition-delay: 0.1s;">
-            <div class="h-48 bg-gradient-to-br from-green-500 to-blue-600 flex items-center justify-center relative">
-              <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-              <div class="text-center text-white relative z-10">
-                <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                <p class="font-semibold">3D Avatar Generation</p>
-              </div>
+          <!-- Project 2: AvatarMesh -->
+          <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in" style="transition-delay: 0.1s;">
+            <div class="relative overflow-hidden group">
+              <img src="profile/avatarmesh.png" 
+                   alt="AvatarMesh" 
+                   class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-signika font-bold mb-2">AvatarMesh</h3>
-              <p class="text-gray-600 text-sm mb-3">2024</p>
-              <p class="text-gray-700 mb-4">A framework for generating high-quality 3D human avatars from a single image via diffusion-based multi-view synthesis</p>
+              <h3 class="text-2xl font-signika font-bold mb-3">AvatarMesh</h3>
+              <p class="text-gray-700 mb-6 leading-relaxed">A framework for generating high-quality 3D human avatars from a single image via diffusion-based multi-view synthesis</p>
               <div class="flex items-center justify-between">
-                <a href="https://github.com/Rainiver/avatarmesh" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors font-medium">
-                  View Project →
+                <a href="https://github.com/Rainiver/avatarmesh" target="_blank" 
+                   class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                  View Project
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
                 </a>
-                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Python</span>
+                <span class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">Python</span>
               </div>
             </div>
           </div>
 
-          <!-- Project 3 -->
-          <div class="project-card bg-white rounded-lg overflow-hidden fade-in" style="transition-delay: 0.2s;">
-            <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center relative">
-              <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-              <div class="text-center text-white relative z-10">
-                <svg class="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                </svg>
-                <p class="font-semibold">3D Gaussian Splatting</p>
-              </div>
+          <!-- Project 3: 3DGS Gen -->
+          <div class="project-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in" style="transition-delay: 0.2s;">
+            <div class="relative overflow-hidden group">
+              <img src="profile/3dgs gen.png" 
+                   alt="3DGS Gen" 
+                   class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
             </div>
             <div class="p-6">
-              <h3 class="text-xl font-signika font-bold mb-2">3DGS Gen</h3>
-              <p class="text-gray-600 text-sm mb-3">2024</p>
-              <p class="text-gray-700 mb-4">A framework integrating deformable 3D Gaussian splatting with geometry-aware GANs for high-fidelity avatar synthesis</p>
+              <h3 class="text-2xl font-signika font-bold mb-3">3DGS Gen</h3>
+              <p class="text-gray-700 mb-6 leading-relaxed">A framework integrating deformable 3D Gaussian splatting with geometry-aware GANs for high-fidelity avatar synthesis</p>
               <div class="flex items-center justify-between">
-                <a href="https://github.com/Rainiver/3DGS_Gen" target="_blank" class="text-blue-600 hover:text-blue-800 transition-colors font-medium">
-                  View Project →
+                <a href="https://github.com/Rainiver/3DGS_Gen" target="_blank" 
+                   class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                  View Project
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
                 </a>
-                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Python</span>
+                <span class="text-xs bg-purple-100 text-purple-800 px-3 py-1 rounded-full font-medium">Python</span>
               </div>
             </div>
           </div>
