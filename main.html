@@ -268,8 +268,8 @@
     </section>
 
     <!-- Featured Work Section -->
-    <section id="projects" class="py-20 px-6 bg-gray-50">
-      <div class="max-w-6xl mx-auto">
+    <section id="projects" class="py-20 px-8 md:px-16 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+      <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
           <div class="fade-in">
             <h2 class="text-3xl md:text-4xl font-signika font-bold mb-4">Featured Work</h2>
@@ -279,12 +279,15 @@
           </div>
         </div>
         
-        <div class="space-y-10">
+        <div class="space-y-12">
           <!-- Project 1: Airbnb AI Booking Platform -->
-          <div class="project-card group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in">
-            <div class="flex flex-col md:flex-row items-center gap-0">
+          <div class="project-card group rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 fade-in relative">
+            <!-- Gradient overlay on card -->
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-purple-50/50 opacity-60 pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row items-stretch gap-0 relative">
               <!-- Image Section - 70% width -->
-              <div class="w-full md:w-[70%] bg-gray-50 p-6 md:p-10">
+              <div class="w-full md:w-[70%] bg-gradient-to-br from-gray-50 to-blue-50/30 p-8 md:p-12">
                 <div class="relative h-64 md:h-96">
                   <img src="profile/airbnb.png" 
                        alt="Airbnb AI Booking Platform" 
@@ -293,7 +296,7 @@
               </div>
               
               <!-- Content Section - 30% width -->
-              <div class="w-full md:w-[30%] p-6 md:p-8 flex flex-col justify-center">
+              <div class="w-full md:w-[30%] bg-white/80 backdrop-blur-sm p-6 md:p-8 flex flex-col justify-center border-l border-gray-100">
                 <h3 class="text-xl md:text-2xl font-signika font-bold mb-3 text-gray-900">
                   Airbnb AI Booking Platform
                 </h3>
@@ -319,10 +322,13 @@
           </div>
 
           <!-- Project 2: AvatarMesh -->
-          <div class="project-card group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in" style="transition-delay: 0.1s;">
-            <div class="flex flex-col md:flex-row items-center gap-0">
+          <div class="project-card group rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 fade-in relative" style="transition-delay: 0.1s;">
+            <!-- Gradient overlay on card -->
+            <div class="absolute inset-0 bg-gradient-to-bl from-green-50/50 via-white to-teal-50/50 opacity-60 pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row items-stretch gap-0 relative">
               <!-- Content Section - 30% width (Left on desktop) -->
-              <div class="w-full md:w-[30%] p-6 md:p-8 flex flex-col justify-center order-2 md:order-1">
+              <div class="w-full md:w-[30%] bg-white/80 backdrop-blur-sm p-6 md:p-8 flex flex-col justify-center order-2 md:order-1 border-r border-gray-100">
                 <h3 class="text-xl md:text-2xl font-signika font-bold mb-3 text-gray-900">
                   AvatarMesh
                 </h3>
@@ -346,7 +352,7 @@
               </div>
               
               <!-- Image Section - 70% width (Right on desktop) -->
-              <div class="w-full md:w-[70%] bg-gray-50 p-6 md:p-10 order-1 md:order-2">
+              <div class="w-full md:w-[70%] bg-gradient-to-bl from-gray-50 to-green-50/30 p-8 md:p-12 order-1 md:order-2">
                 <div class="relative h-64 md:h-96">
                   <img src="profile/avatarmesh.png" 
                        alt="AvatarMesh" 
@@ -357,10 +363,13 @@
           </div>
 
           <!-- Project 3: 3DGS Gen -->
-          <div class="project-card group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 fade-in" style="transition-delay: 0.2s;">
-            <div class="flex flex-col md:flex-row items-center gap-0">
+          <div class="project-card group rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 fade-in relative" style="transition-delay: 0.2s;">
+            <!-- Gradient overlay on card -->
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-white to-pink-50/50 opacity-60 pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row items-stretch gap-0 relative">
               <!-- Image Section - 70% width -->
-              <div class="w-full md:w-[70%] bg-gray-50 p-6 md:p-10">
+              <div class="w-full md:w-[70%] bg-gradient-to-br from-gray-50 to-purple-50/30 p-8 md:p-12">
                 <div class="relative h-64 md:h-96">
                   <img src="profile/3dgs gen.png" 
                        alt="3DGS Gen" 
@@ -369,7 +378,7 @@
               </div>
               
               <!-- Content Section - 30% width -->
-              <div class="w-full md:w-[30%] p-6 md:p-8 flex flex-col justify-center">
+              <div class="w-full md:w-[30%] bg-white/80 backdrop-blur-sm p-6 md:p-8 flex flex-col justify-center border-l border-gray-100">
                 <h3 class="text-xl md:text-2xl font-signika font-bold mb-3 text-gray-900">
                   3DGS Gen
                 </h3>
