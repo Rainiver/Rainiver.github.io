@@ -71,26 +71,11 @@
       background-size: cover;
       background-position: center;
       transition: all 0.5s ease;
-      position: relative;
     }
     
     .profile-image:hover {
       transform: scale(1.08) rotate(3deg);
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    }
-    
-    .profile-image::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(96, 165, 250, 0.3), rgba(167, 139, 250, 0.3), rgba(244, 114, 182, 0.3));
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-    
-    .profile-image:hover::before {
-      opacity: 1;
     }
     
     .section-divider {
